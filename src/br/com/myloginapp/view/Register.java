@@ -5,6 +5,11 @@
  */
 package br.com.myloginapp.view;
 
+import br.com.myloginapp.utils.TextComponentValidator;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.text.JTextComponent;
+
 /**
  *
  * @author sergi
@@ -33,10 +38,10 @@ public class Register extends javax.swing.JFrame {
         UserField = new javax.swing.JTextField();
         PassLabel = new javax.swing.JLabel();
         LoginButton = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        PassField = new javax.swing.JPasswordField();
         ConfirmPassLabel = new javax.swing.JLabel();
         ConfirmPassField = new javax.swing.JPasswordField();
-        LoginButton2 = new javax.swing.JButton();
+        CancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -50,6 +55,7 @@ public class Register extends javax.swing.JFrame {
         UserLabel.setText("Nome do Usuário");
 
         UserField.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
+        UserField.setToolTipText("Nome do Usuário");
 
         PassLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 28)); // NOI18N
         PassLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -58,14 +64,28 @@ public class Register extends javax.swing.JFrame {
         LoginButton.setBackground(new java.awt.Color(255, 255, 255));
         LoginButton.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
         LoginButton.setText("CONFIRMAR");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginButtonActionPerformed(evt);
+            }
+        });
+
+        PassField.setToolTipText("Senha");
 
         ConfirmPassLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 28)); // NOI18N
         ConfirmPassLabel.setForeground(new java.awt.Color(255, 255, 255));
         ConfirmPassLabel.setText("Confirmar Senha");
 
-        LoginButton2.setBackground(new java.awt.Color(255, 255, 255));
-        LoginButton2.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
-        LoginButton2.setText("CANCELAR");
+        ConfirmPassField.setToolTipText("Confirmar Senha");
+
+        CancelButton.setBackground(new java.awt.Color(255, 255, 255));
+        CancelButton.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
+        CancelButton.setText("CANCELAR");
+        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,11 +102,11 @@ public class Register extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(LoginButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(LoginButton2))
+                                .addComponent(CancelButton))
                             .addComponent(PassLabel)
                             .addComponent(UserLabel)
                             .addComponent(UserField)
-                            .addComponent(jPasswordField1)
+                            .addComponent(PassField)
                             .addComponent(ConfirmPassLabel)
                             .addComponent(ConfirmPassField, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))))
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -103,7 +123,7 @@ public class Register extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(PassLabel)
                 .addGap(2, 2, 2)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PassField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ConfirmPassLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -111,7 +131,7 @@ public class Register extends javax.swing.JFrame {
                 .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LoginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -120,51 +140,40 @@ public class Register extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+                dispose();
+            }
+        });
+    }//GEN-LAST:event_CancelButtonActionPerformed
+
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        List<JTextComponent> list = Arrays.asList(
+                UserField,
+                PassField,
+                ConfirmPassField
+        );
+        TextComponentValidator.checkIsEmptyTextComponent(this, list);
+        TextComponentValidator.checkIsEqualsTextComponent(this, PassField, ConfirmPassField);
+    }//GEN-LAST:event_LoginButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Register.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Register().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CancelButton;
     private javax.swing.JPasswordField ConfirmPassField;
     private javax.swing.JLabel ConfirmPassLabel;
     private javax.swing.JButton LoginButton;
-    private javax.swing.JButton LoginButton2;
+    private javax.swing.JPasswordField PassField;
     private javax.swing.JLabel PassLabel;
     private javax.swing.JTextField UserField;
     private javax.swing.JLabel UserLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel logo;
     // End of variables declaration//GEN-END:variables
 }
