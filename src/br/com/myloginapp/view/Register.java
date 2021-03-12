@@ -36,7 +36,6 @@ public class Register extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         ConfirmPassLabel = new javax.swing.JLabel();
         ConfirmPassField = new javax.swing.JPasswordField();
-        LoginButton1 = new javax.swing.JButton();
         LoginButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,10 +63,6 @@ public class Register extends javax.swing.JFrame {
         ConfirmPassLabel.setForeground(new java.awt.Color(255, 255, 255));
         ConfirmPassLabel.setText("Confirmar Senha");
 
-        LoginButton1.setBackground(new java.awt.Color(255, 255, 255));
-        LoginButton1.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
-        LoginButton1.setText("CONFIRMAR");
-
         LoginButton2.setBackground(new java.awt.Color(255, 255, 255));
         LoginButton2.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
         LoginButton2.setText("CANCELAR");
@@ -88,7 +83,6 @@ public class Register extends javax.swing.JFrame {
                                 .addComponent(LoginButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(LoginButton2))
-                            .addComponent(LoginButton1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(PassLabel)
                             .addComponent(UserLabel)
                             .addComponent(UserField)
@@ -102,26 +96,23 @@ public class Register extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(logo)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addComponent(UserLabel)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(UserField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(PassLabel)
+                .addGap(2, 2, 2)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ConfirmPassLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(ConfirmPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(LoginButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addComponent(ConfirmPassLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ConfirmPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LoginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, "card2");
@@ -168,7 +159,6 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JPasswordField ConfirmPassField;
     private javax.swing.JLabel ConfirmPassLabel;
     private javax.swing.JButton LoginButton;
-    private javax.swing.JButton LoginButton1;
     private javax.swing.JButton LoginButton2;
     private javax.swing.JLabel PassLabel;
     private javax.swing.JTextField UserField;

@@ -5,6 +5,11 @@
  */
 package br.com.myloginapp.view;
 
+import br.com.myloginapp.utils.TextComponentValidator;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.text.JTextComponent;
+
 /**
  *
  * @author sergi
@@ -48,16 +53,23 @@ public class Login extends javax.swing.JFrame {
         UserLabel.setText("Nome do Usuário");
 
         UserField.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
+        UserField.setToolTipText("Nome do Usuário");
 
         PassLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 28)); // NOI18N
         PassLabel.setForeground(new java.awt.Color(255, 255, 255));
         PassLabel.setText("Senha");
 
         PassField.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
+        PassField.setToolTipText("Senha");
 
         LoginButton.setBackground(new java.awt.Color(255, 255, 255));
         LoginButton.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
         LoginButton.setText("LOGIN");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginButtonActionPerformed(evt);
+            }
+        });
 
         RegisterButton.setBackground(new java.awt.Color(255, 255, 255));
         RegisterButton.setFont(new java.awt.Font("Trebuchet MS", 0, 22)); // NOI18N
@@ -106,6 +118,14 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        List<JTextComponent> list = Arrays.asList(
+                UserField,
+                PassField
+        );
+        TextComponentValidator.checkIsEmptyTextComponent(this, list);
+    }//GEN-LAST:event_LoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
