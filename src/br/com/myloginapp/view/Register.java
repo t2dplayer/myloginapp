@@ -5,9 +5,12 @@
  */
 package br.com.myloginapp.view;
 
+import br.com.myloginapp.dao.UserDAO;
+import br.com.myloginapp.model.User;
 import br.com.myloginapp.utils.TextComponentValidator;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.text.JTextComponent;
 
 /**
@@ -155,8 +158,23 @@ public class Register extends javax.swing.JFrame {
                 PassField,
                 ConfirmPassField
         );
-        TextComponentValidator.checkIsEmptyTextComponent(this, list);
-        TextComponentValidator.checkIsEqualsTextComponent(this, PassField, ConfirmPassField);
+        if (TextComponentValidator.checkIsEmptyTextComponent(this, list) 
+                &&  TextComponentValidator.checkIsEqualsTextComponent(this, PassField, ConfirmPassField)) {
+            User user = new User();
+            user.setUsername(UserField.getText());
+            user.setPassword(Arrays.toString(PassField.getPassword()));
+            if (!UserDAO.insert(user)) {
+                JOptionPane.showMessageDialog(this, "Erro ao inserir usuário", "Mensagem de Erro", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuário registrado!");
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        new Login().setVisible(true);
+                        dispose();
+                    }
+                });                
+            }
+        }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     /**

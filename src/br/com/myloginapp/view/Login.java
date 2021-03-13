@@ -5,9 +5,12 @@
  */
 package br.com.myloginapp.view;
 
+import br.com.myloginapp.dao.UserDAO;
+import br.com.myloginapp.utils.StringUtils;
 import br.com.myloginapp.utils.TextComponentValidator;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.text.JTextComponent;
 
 /**
@@ -116,7 +119,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         getContentPane().add(PainelPrincipal, "card2");
@@ -129,7 +132,16 @@ public class Login extends javax.swing.JFrame {
                 UserField,
                 PassField
         );
-        TextComponentValidator.checkIsEmptyTextComponent(this, list);
+        if (TextComponentValidator.checkIsEmptyTextComponent(this, list)) {
+            String where = "username = " + StringUtils.singleQuote(UserField.getText());
+            where += " AND password = " + StringUtils.singleQuote(Arrays.toString(PassField.getPassword()));
+            if (UserDAO.selectWhere(where).size() > 0) {
+                JOptionPane.showMessageDialog(this, "Usuário logado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Nome de usuário ou senha incorretos!");
+                UserField.requestFocus();
+            }
+        }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed

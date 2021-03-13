@@ -20,7 +20,7 @@ import javax.swing.text.JTextComponent;
  * @author sergi
  */
 public class TextComponentValidator {
-    public static void checkIsEqualsTextComponent(JFrame frame, 
+    public static boolean checkIsEqualsTextComponent(JFrame frame, 
             JTextComponent c1, 
             JTextComponent c2) {
         List<JTextComponent> list = Arrays.asList(
@@ -36,15 +36,17 @@ public class TextComponentValidator {
             );
             for (JTextComponent item: list) {
                 item.setBorder(new LineBorder(Color.red, 3));
-            }            
+            }
+            return false;
         } else {
             for (JTextComponent item: list) {
                 item.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
                 SwingUtilities.updateComponentTreeUI(item);
             }             
+            return true;
         }
     }
-    public static void checkIsEmptyTextComponent(JFrame frame, List<JTextComponent> list) {
+    public static boolean checkIsEmptyTextComponent(JFrame frame, List<JTextComponent> list) {
         for (JTextComponent item: list) {
             item.setBorder(UIManager.getLookAndFeel().getDefaults().getBorder("TextField.border"));
             SwingUtilities.updateComponentTreeUI(item);
@@ -56,8 +58,9 @@ public class TextComponentValidator {
                 );
                 item.requestFocus();
                 item.setBorder(new LineBorder(Color.red, 3));
-                break;
+                return false;
             }
         }
-    }
+        return true;
+    }    
 }
