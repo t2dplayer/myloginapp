@@ -1,4 +1,4 @@
-# My Logina App
+# My Login App
 Exemplo de tela de login utilizando Netbeans, Java e MySQL.
 - Realiza cadastro de novo usuário
 - Faz login
