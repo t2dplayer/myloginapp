@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,15 +19,16 @@ import java.util.logging.Logger;
 public class Conexao {
     private static Connection con  = null;
     static {
-        String url ="jdbc:mysql://localhost:3306/login?useTimezone=true&serverTimezone=UTC";
+        String url ="jdbc:mysql://localhost:3306/projeto_integrado?useTimezone=true&serverTimezone=UTC";
         String user = "root";
         String pass = "admin123";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = (Connection) DriverManager.getConnection(url, user, pass);            
         } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao tentar se conectar ao servidor MySQL");
 //            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Erro ao tentar se conectar ao servidor MySQL");
+//            System.out.println("Erro ao tentar se conectar ao servidor MySQL");
         }
     }
     public static Connection getConexao() {
