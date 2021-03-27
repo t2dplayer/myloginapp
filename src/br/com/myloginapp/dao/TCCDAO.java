@@ -46,7 +46,7 @@ public class TCCDAO {
             ResultSet r = stmt.executeQuery();
             result = create(r);
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TCCDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
@@ -62,7 +62,7 @@ public class TCCDAO {
             ResultSet r = stmt.executeQuery();
             result = create(r);        
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TCCDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
@@ -89,7 +89,7 @@ public class TCCDAO {
             stmt.execute();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TCCDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -104,7 +104,7 @@ public class TCCDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TCCDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         return result;
@@ -122,7 +122,7 @@ public class TCCDAO {
             stmt.execute();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TCCDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }        
     }

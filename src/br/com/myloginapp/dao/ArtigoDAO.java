@@ -56,7 +56,7 @@ public class ArtigoDAO {
             ResultSet r = stmt.executeQuery();
             result = create(r);
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArtigoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
@@ -72,7 +72,7 @@ public class ArtigoDAO {
             ResultSet r = stmt.executeQuery();
             result = create(r);        
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArtigoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
@@ -100,7 +100,7 @@ public class ArtigoDAO {
             stmt.execute();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArtigoDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -115,7 +115,7 @@ public class ArtigoDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArtigoDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         return result;
@@ -133,7 +133,7 @@ public class ArtigoDAO {
             stmt.execute();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArtigoDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }        
     }
