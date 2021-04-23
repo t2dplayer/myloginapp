@@ -137,6 +137,12 @@ public class Login extends javax.swing.JFrame {
             where += " AND password = " + StringUtils.singleQuote(Arrays.toString(PassField.getPassword()));
             if (UserDAO.selectWhere(where).size() > 0) {
                 JOptionPane.showMessageDialog(this, "Usuário logado com sucesso!");
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        new Dashboard().setVisible(true);
+                        dispose();
+                    }
+                });                 
             } else {
                 JOptionPane.showMessageDialog(this, "Nome de usuário ou senha incorretos!");
                 UserField.requestFocus();
