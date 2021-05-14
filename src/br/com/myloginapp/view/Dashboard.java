@@ -5,6 +5,14 @@
  */
 package br.com.myloginapp.view;
 
+import br.com.myloginapp.dao.ProjetoDAO;
+import br.com.myloginapp.dao.TCCDAO;
+import br.com.myloginapp.utils.DbUtils;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author sergi
@@ -16,6 +24,9 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        loadProjects();
+        loadTCCs();
+        loadPapers();
     }
 
     /**
@@ -48,6 +59,11 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
         btnProjetos.setText("Projetos");
+        btnProjetos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProjetosActionPerformed(evt);
+            }
+        });
 
         btnTCC.setText("TCCs");
 
@@ -172,6 +188,14 @@ public class Dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnProjetosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjetosActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Projects().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_btnProjetosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -198,7 +222,6 @@ public class Dashboard extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -223,4 +246,32 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JTable tblProjetos;
     private javax.swing.JTable tblTccs;
     // End of variables declaration//GEN-END:variables
+
+    private void loadProjects() {        
+        ResultSet rs = DbUtils.selectAll("projeto");
+        try {
+            tblProjetos.setModel(DbUtils.buildTableModel(rs));
+        } catch (SQLException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void loadTCCs() {
+        ResultSet rs = DbUtils.selectAll("tcc");
+        try {
+            tblTccs.setModel(DbUtils.buildTableModel(rs));
+        } catch (SQLException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void loadPapers() {
+        ResultSet rs = DbUtils.selectAll("artigo");
+        try {
+            tblArtigos.setModel(DbUtils.buildTableModel(rs));
+        } catch (SQLException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

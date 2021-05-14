@@ -50,6 +50,7 @@ public class TCCDAO {
         }
         return result;
     }
+    
     public static List<TCC> selectWhere(String where) {
         String sql = SQLMaker.selectWhere(SQLMaker.initMap(new String[][] {
             {"table", "tcc"},
@@ -66,7 +67,7 @@ public class TCCDAO {
         }
         return result;
     }
-
+    
     public static String createValues(TCC tcc) {
         String values = StringUtils.singleQuote(tcc.getTitulo());
         values += ", " + StringUtils.singleQuote(tcc.getAutor());

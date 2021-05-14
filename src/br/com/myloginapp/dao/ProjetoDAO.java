@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -76,7 +77,22 @@ public class ProjetoDAO {
         }
         return result;
     }
-
+    public static ResultSet selectAll() {
+        String sql = SQLMaker.selectWhere(SQLMaker.initMap(new String[][] {
+            {"table", "projeto"},
+            {"fields", "*"},
+            {"conditions", "1"}
+        }));
+        ResultSet rs = null;
+        Statement st;
+        try {
+            st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            rs = st.executeQuery(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjetoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+    }
     public static String createValues(Projeto projeto) {
         String values = StringUtils.singleQuote(projeto.getNomeProjeto());
         values += ", " + StringUtils.singleQuote(projeto.getNomeResposavel());
